@@ -4,7 +4,7 @@
              x:Class="BinnoMetricMaui.View.ProductPage">
     <VerticalStackLayout>
         <Label 
-            Text="Здесь будут продукты"
+            Text="{Binding Message}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>
