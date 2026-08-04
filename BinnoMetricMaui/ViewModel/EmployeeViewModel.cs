@@ -55,5 +55,34 @@ namespace BinnoMetricMaui.ViewModel
                 Message = $"Ошибка загрузки: {ex.Message}";
             }
         }
+    [RelayCommand]
+        private async Task AddEmployee()
+        {
+            string name = await Application.Current.MainPage.DisplayPromptAsync(
+                "Добавление сотрудника",
+                "Введите ФИО сотрудника:",
+                "Добавить",
+                "Отмена");
+
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                var newEmployee = new Employee
+                {
+                    FullName = name,
+                };
+
+                bool result = await _employeeService.AddEmployeeAsync(newEmployee);
+
+                if (result)
+                {
+                    await LoadEmployeesAsync();
+                    Message = $"Сотрудник '{name}' успешно добавлен!";
+                }
+                else
+                {
+                    Message = "Ошибка при добавлении сотрудника!";
+                }
+            }
+        }
     }
 }

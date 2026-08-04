@@ -1,6 +1,7 @@
 ﻿using BinnoMetricMaui.Model;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -26,6 +27,23 @@ public class EmployeeService
         catch
         {
             return new List<Employee>();
+        }
+    }
+
+    internal async Task<bool> AddEmployeeAsync(Employee newEmployee)
+    {
+        string url = "https://localhost:7259/api/Employees/AddEmployee";
+
+        try
+        {
+            var json = JsonSerializer.Serialize(newEmployee);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync(url, content);
+            return response.IsSuccessStatusCode;
+        }
+        catch
+        {
+            return false;
         }
     }
 
