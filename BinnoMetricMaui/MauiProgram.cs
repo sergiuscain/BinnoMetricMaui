@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using BinnoMetricMaui.View;
+using BinnoMetricMaui.ViewModel;
+using Microsoft.Extensions.Logging;
 
 namespace BinnoMetricMaui
 {
@@ -15,8 +17,22 @@ namespace BinnoMetricMaui
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            //Вкладки
+            builder.Services.AddSingleton<ProductPage>();
+            builder.Services.AddSingleton<ProductViewModel>();
+            builder.Services.AddSingleton<EmployeePage>();
+            builder.Services.AddSingleton<EmployeeViewModel>();
+            builder.Services.AddSingleton<DowntimePage>();
+            builder.Services.AddSingleton<DowntimeViewModel>();
+            builder.Services.AddSingleton<DowntimeTypePage>();
+            builder.Services.AddSingleton<DowntimeTypeViewModel>();
+            builder.Services.AddSingleton<EquipmentLine>();
+            builder.Services.AddSingleton<EquipmentLineViewModel>();
+            builder.Services.AddSingleton<ProductionRecordPage>();
+            builder.Services.AddSingleton<ProductionRecordViewModel>();
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

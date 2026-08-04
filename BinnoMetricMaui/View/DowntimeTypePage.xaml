@@ -4,7 +4,7 @@
              x:Class="BinnoMetricMaui.View.DowntimeTypePage">
     <VerticalStackLayout>
         <Label 
-            Text="Типы простоев"
+            Text="{Binding Message}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>

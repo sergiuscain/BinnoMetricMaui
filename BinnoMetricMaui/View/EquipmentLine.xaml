@@ -4,7 +4,7 @@
              x:Class="BinnoMetricMaui.View.EquipmentLine">
     <VerticalStackLayout>
         <Label 
-            Text="Линии"
+            Text="{Binding Message}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>

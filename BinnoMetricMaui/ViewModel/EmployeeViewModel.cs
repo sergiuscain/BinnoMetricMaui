@@ -5,9 +5,9 @@ using System.Text;
 
 namespace BinnoMetricMaui.ViewModel
 {
-    public partial class ProductViewModel : ObservableObject
+    public partial class EmployeeViewModel : ObservableObject
     {
         [ObservableProperty]
-        private string message = "mvvm продукты";
+        private string message = "mvvm Сотрудники";
     }
 }
