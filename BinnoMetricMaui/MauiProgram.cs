@@ -1,4 +1,5 @@
-﻿using BinnoMetricMaui.View;
+﻿using BinnoMetricMaui.Service;
+using BinnoMetricMaui.View;
 using BinnoMetricMaui.ViewModel;
 using Microsoft.Extensions.Logging;
 
@@ -30,6 +31,10 @@ namespace BinnoMetricMaui
             builder.Services.AddSingleton<EquipmentLineViewModel>();
             builder.Services.AddSingleton<ProductionRecordPage>();
             builder.Services.AddSingleton<ProductionRecordViewModel>();
+
+            //Сервисы
+            builder.Services.AddSingleton<EmployeeService>();
+            builder.Services.AddSingleton<HttpClient>();
 
 #if DEBUG
             builder.Logging.AddDebug();

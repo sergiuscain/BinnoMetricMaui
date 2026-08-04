@@ -72,10 +72,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Model\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiXaml Update="View\DowntimePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
