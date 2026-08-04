@@ -8,11 +8,23 @@
     Title="BinnoMetricMaui">
 
     <TabBar>
+        <Tab Title="Производство">
+            <ShellContent ContentTemplate="{DataTemplate view:ProductionRecordPage}" />
+        </Tab>
         <Tab Title="Продукты">
             <ShellContent ContentTemplate="{DataTemplate view:ProductPage}" />
         </Tab>
         <Tab Title="Сотрудники">
             <ShellContent ContentTemplate="{DataTemplate view:EmployeePage}" />
+        </Tab>
+        <Tab Title="Простои">
+            <ShellContent ContentTemplate="{DataTemplate view:DowntimePage}" />
+        </Tab>
+        <Tab Title="Типы простоев">
+            <ShellContent ContentTemplate="{DataTemplate view:DowntimeTypePage}" />
+        </Tab>
+        <Tab Title="Линии">
+            <ShellContent ContentTemplate="{DataTemplate view:EquipmentLine}" />
         </Tab>
     </TabBar>
 
