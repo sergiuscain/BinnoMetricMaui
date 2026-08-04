@@ -6,6 +6,13 @@
              x:Class="BinnoMetricMaui.View.EmployeePage">
     <ScrollView>
         <VerticalStackLayout Spacing="10" Padding="10">
+            <Border>
+                <Grid ColumnDefinitions="*,*,*">
+                    <Button Grid.Column="0" Style="{StaticResource PrimaryButton}" Text="Добавить сотрудника" />
+                    <Button Grid.Column="1" Style="{StaticResource PrimaryButton}" Command="{Binding UpdateEmployeeListCommand}" Text="Обновить" />
+                    <Button Grid.Column="2" Style="{StaticResource PrimaryButton}" Text="Топ сотрудников" />
+                </Grid>
+            </Border>
 
             <CollectionView 
                 ItemsSource="{Binding Employees}"
