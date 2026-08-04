@@ -29,6 +29,12 @@ namespace BinnoMetricMaui.ViewModel
         {
             await LoadEmployeesAsync();
         }
+        [RelayCommand]
+        public async Task DeleteEmployee(int id)
+        {
+            var result = await _employeeService.DeleteEmployeeAsync(id);
+            await LoadEmployeesAsync();
+        }
 
         private async Task LoadEmployeesAsync()
         {

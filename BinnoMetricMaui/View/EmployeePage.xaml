@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:BinnoMetricMaui.ViewModel"
+             xmlns:view="clr-namespace:BinnoMetricMaui.View"
              x:Class="BinnoMetricMaui.View.EmployeePage">
     <ScrollView>
         <VerticalStackLayout Spacing="10" Padding="10">
@@ -16,10 +17,15 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame>
-                            <Grid ColumnDefinitions="*,*,Auto" 
+                            <Grid ColumnDefinitions="*,*,*,*,Auto" 
                                       RowSpacing="8">
                                 <Label Text="{Binding FullName}" Grid.Column="0"/>
-                                <Label Text="{Binding Id, StringFormat='ID: {0}'}" Grid.Column="2"/>
+                                <Button Grid.Column="3"
+                                        Text="Удалить"
+                                        Command="{Binding Path=BindingContext.DeleteEmployeeCommand, 
+                                                  Source={RelativeSource AncestorType={x:Type view:EmployeePage}}}"
+                                        CommandParameter="{Binding Id}"/>
+                                <Label Text="{Binding Id, StringFormat='ID: {0}'}" Grid.Column="4"/>
                             </Grid>
                         </Frame>
                     </DataTemplate>
