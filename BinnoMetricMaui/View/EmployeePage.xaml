@@ -6,28 +6,25 @@
              x:Class="BinnoMetricMaui.View.EmployeePage">
     <ScrollView>
         <VerticalStackLayout Spacing="10" Padding="10">
-            <Button 
-                Text="Обновить список"
-                Command="{Binding UpdateEmployeeListCommand}"
-                HorizontalOptions="Center" />
 
             <CollectionView 
                 ItemsSource="{Binding Employees}"
-                VerticalScrollBarVisibility="Always">
+                VerticalScrollBarVisibility="Always"
+                Style="{StaticResource EmployeeCollectionView}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame>
-                            <Grid ColumnDefinitions="*,*,*,*,Auto" 
-                                      RowSpacing="8">
-                                <Label Text="{Binding FullName}" Grid.Column="0"/>
-                                <Button Grid.Column="3"
+                        <Border  Style="{StaticResource ShadowBorder}">
+                            <Grid ColumnDefinitions="*,Auto,Auto">
+                                <Label Style="{StaticResource SubtitleLabel}"  Text="{Binding FullName}" Grid.Column="0"/>
+                                <Button Grid.Column="1"
+                                        Style="{StaticResource DangerButton}"
                                         Text="Удалить"
                                         Command="{Binding Path=BindingContext.DeleteEmployeeCommand, 
                                                   Source={RelativeSource AncestorType={x:Type view:EmployeePage}}}"
                                         CommandParameter="{Binding Id}"/>
-                                <Label Text="{Binding Id, StringFormat='ID: {0}'}" Grid.Column="4"/>
+                                <Label Style="{StaticResource InfoLabel}" Text="{Binding Id, StringFormat='ID: {0}'}" Grid.Column="2"/>
                             </Grid>
-                        </Frame>
+                        </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
