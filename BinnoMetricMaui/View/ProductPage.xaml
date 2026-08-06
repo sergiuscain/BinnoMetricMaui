@@ -32,10 +32,8 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Label 
-                Text="{Binding Message}"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
+            <Button Style="{StaticResource ClearMessageBoxButton}" Command="{Binding CLearLogMessageCommand}" HorizontalOptions="Center" Text="Очистить лог"/>
+            <Label Text="{Binding LogMessage}"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

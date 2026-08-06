@@ -79,13 +79,13 @@
         <Setter Property="Margin" Value="0,2" />
     </Style>
 
-    <Style TargetType="Button" x:Key="DangerButtonLarge">
-        <Setter Property="BackgroundColor" Value="{StaticResource DangerColor}" />
-        <Setter Property="Padding" Value="20,12" />
-        <Setter Property="CornerRadius" Value="8" />
-        <Setter Property="HeightRequest" Value="50" />
-        <Setter Property="Margin" Value="0,5" />
+    <Style TargetType="Button" x:Key="ClearMessageBoxButton">
+        <Setter Property="BackgroundColor" Value="{StaticResource WarningColor}" />
+        <Setter Property="Padding" Value="15,8" />
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="HorizontalOptions" Value="Center" />
     </Style>
+
 
     <Style TargetType="Button" x:Key="OutlineButton">
         <Setter Property="BackgroundColor" Value="Transparent" />

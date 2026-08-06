@@ -19,7 +19,7 @@ namespace BinnoMetricMaui.ViewModel
             _ = LoadEmployeesAsync();
         }
         [ObservableProperty]
-        private string message = "";
+        private string logMessage = "";
 
         [ObservableProperty]
         private ObservableCollection<Employee> employees = new ObservableCollection<Employee>();
@@ -33,8 +33,8 @@ namespace BinnoMetricMaui.ViewModel
         public async Task DeleteEmployee(int id)
         {
             var result = await _employeeService.DeleteEmployeeAsync(id);
-            if (result) message += $"\nСотрудник с ID: {id} удалён";
-            else message += "\nНе удалось удалить сотрудника...";
+            if (result) logMessage += $"\nСотрудник с ID: {id} удалён";
+            else logMessage += "\nНе удалось удалить сотрудника...";
             await LoadEmployeesAsync();
         }
 
@@ -50,11 +50,11 @@ namespace BinnoMetricMaui.ViewModel
                     Employees.Add(employee);
                 }
                 
-                Message += $"\nЗагружено {Employees.Count} сотрудников";
+                LogMessage += $"\nЗагружено {Employees.Count} сотрудников";
             }
             catch (Exception ex)
             {
-                Message += $"\nОшибка загрузки: {ex.Message}";
+                LogMessage += $"\nОшибка загрузки: {ex.Message}";
             }
         }
         [RelayCommand]
@@ -77,14 +77,19 @@ namespace BinnoMetricMaui.ViewModel
 
                 if (result)
                 {
-                    Message += $"\nСотрудник '{name}' успешно добавлен!";
+                    LogMessage += $"\nСотрудник '{name}' успешно добавлен!";
                     await LoadEmployeesAsync();
                 }
                 else
                 {
-                    Message += "\nОшибка при добавлении сотрудника!";
+                    LogMessage += "\nОшибка при добавлении сотрудника!";
                 }
             }
+        }
+        [RelayCommand]
+        private void CLearLogMessage()
+        {
+            LogMessage = "";
         }
     }
 }

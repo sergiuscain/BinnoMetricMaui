@@ -20,7 +20,7 @@ namespace BinnoMetricMaui.ViewModel
         }
 
         [ObservableProperty]
-        private string message = "";
+        private string logMessage = "";
 
         [ObservableProperty]
         private ObservableCollection<Product> products = new ObservableCollection<Product>();
@@ -34,8 +34,8 @@ namespace BinnoMetricMaui.ViewModel
         public async Task DeleteProduct(int id)
         {
             var result = await _productService.DeleteProductAsync(id);
-            if (result) message += $"\nПродукт с ID: {id} удалён";
-            else message += "\nНе удалось удалить продукт. Возможно, этот продукт связан с производственными записями\nУдалите связанные производственные записи для удаления продукта";
+            if (result) LogMessage += $"\nПродукт с ID: {id} удалён";
+            else LogMessage += "\nНе удалось удалить продукт. Возможно, этот продукт связан с производственными записями\nУдалите связанные производственные записи для удаления продукта";
             await LoadProductsAsync();
         }
 
@@ -51,12 +51,17 @@ namespace BinnoMetricMaui.ViewModel
                     Products.Add(product);
                 }
 
-                Message += $"\nЗагружено {Products.Count} продуктов";
+                LogMessage += $"\nЗагружено {Products.Count} продуктов";
             }
             catch (Exception ex)
             {
-                Message += $"\nОшибка загрузки: {ex.Message}";
+                LogMessage += $"\nОшибка загрузки: {ex.Message}";
             }
+        }
+        [RelayCommand]
+        private void CLearLogMessage()
+        {
+            LogMessage = "";
         }
     }
 }
