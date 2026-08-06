@@ -237,7 +237,7 @@
     </Style>
 
     <!-- Стиль для CollectionView  -->
-    <Style TargetType="CollectionView" x:Key="EmployeeCollectionView">
+    <Style TargetType="CollectionView">
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="VerticalScrollBarVisibility" Value="Always" />
         <Setter Property="ItemsLayout">

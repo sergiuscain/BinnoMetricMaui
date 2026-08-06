@@ -55,7 +55,7 @@ namespace BinnoMetricMaui.ViewModel
                 Message = $"Ошибка загрузки: {ex.Message}";
             }
         }
-    [RelayCommand]
+        [RelayCommand]
         private async Task AddEmployee()
         {
             string name = await Application.Current.MainPage.DisplayPromptAsync(

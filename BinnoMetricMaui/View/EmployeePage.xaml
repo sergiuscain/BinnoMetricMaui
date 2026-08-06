@@ -16,8 +16,7 @@
 
             <CollectionView 
                 ItemsSource="{Binding Employees}"
-                VerticalScrollBarVisibility="Always"
-                Style="{StaticResource EmployeeCollectionView}">
+                VerticalScrollBarVisibility="Always">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border  Style="{StaticResource ShadowBorder}">
