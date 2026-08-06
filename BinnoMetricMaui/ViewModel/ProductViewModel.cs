@@ -58,6 +58,37 @@ namespace BinnoMetricMaui.ViewModel
                 LogMessage += $"\nОшибка загрузки: {ex.Message}";
             }
         }
+
+        [RelayCommand]
+        private async Task AddProduct()
+        {
+            string name = await Application.Current.MainPage.DisplayPromptAsync(
+                "Добавление продукта",
+                "Введите название продукта:",
+                "Добавить",
+                "Отмена");
+
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                var newProduct = new Product
+                {
+                    Name = name,
+                };
+
+                bool result = await _productService.AddProductAsync(newProduct);
+
+                if (result)
+                {
+                    LogMessage += $"\nПродукт '{name}' успешно добавлен!";
+                    await LoadProductsAsync();
+                }
+                else
+                {
+                    LogMessage += "\nОшибка при добавлении продукта!";
+                }
+            }
+        }
+
         [RelayCommand]
         private void CLearLogMessage()
         {
