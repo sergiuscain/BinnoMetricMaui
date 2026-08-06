@@ -18,15 +18,21 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border  Style="{StaticResource ShadowBorder}">
-                            <Grid ColumnDefinitions="*,Auto,Auto">
+                            <Grid ColumnDefinitions="*,Auto,Auto,Auto">
                                 <Label Style="{StaticResource SubtitleLabel}"  Text="{Binding Name}" Grid.Column="0"/>
                                 <Button Grid.Column="1"
+                                    Style="{StaticResource PrimaryButton}"
+                                    Text="Топ сотрудников"
+                                    Command="{Binding Path=BindingContext.GetTopEmployeesByProductCommand, 
+                                    Source={RelativeSource AncestorType={x:Type view:ProductPage}}}"
+                                    CommandParameter="{Binding Id}"/>
+                                <Button Grid.Column="2"
                                     Style="{StaticResource DangerButton}"
                                     Text="Удалить"
                                     Command="{Binding Path=BindingContext.DeleteProductCommand, 
                                     Source={RelativeSource AncestorType={x:Type view:ProductPage}}}"
                                     CommandParameter="{Binding Id}"/>
-                                <Label Style="{StaticResource InfoLabel}" Text="{Binding Id, StringFormat='ID: {0}'}" Grid.Column="2"/>
+                                <Label Style="{StaticResource InfoLabel}" Text="{Binding Id, StringFormat='ID: {0}'}" Grid.Column="3"/>
                             </Grid>
                         </Border>
                     </DataTemplate>

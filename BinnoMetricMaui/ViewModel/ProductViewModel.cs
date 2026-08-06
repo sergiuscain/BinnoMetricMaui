@@ -90,6 +90,12 @@ namespace BinnoMetricMaui.ViewModel
         }
 
         [RelayCommand]
+        private void GetTopEmployeesByProduct(int productId)
+        {
+            var product = "Test";
+        }
+
+        [RelayCommand]
         private void CLearLogMessage()
         {
             LogMessage = "";
