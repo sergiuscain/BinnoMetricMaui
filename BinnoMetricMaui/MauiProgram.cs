@@ -34,6 +34,7 @@ namespace BinnoMetricMaui
 
             //Сервисы
             builder.Services.AddSingleton<EmployeeService>();
+            builder.Services.AddSingleton<AnalyticsService>();
             builder.Services.AddSingleton<ProductService>();
             builder.Services.AddSingleton<HttpClient>();
 

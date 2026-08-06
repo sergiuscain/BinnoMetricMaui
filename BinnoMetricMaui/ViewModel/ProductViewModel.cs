@@ -1,5 +1,6 @@
 ﻿using BinnoMetricMaui.Model;
 using BinnoMetricMaui.Service;
+using BinnoMetricMaui.View;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
@@ -12,9 +13,11 @@ namespace BinnoMetricMaui.ViewModel
     public partial class ProductViewModel : ObservableObject
     {
         private readonly ProductService _productService;
-        public ProductViewModel(ProductService productService)
+        private readonly AnalyticsService _analyticsService;
+        public ProductViewModel(ProductService productService, AnalyticsService analyticsService    )
         {
             _productService = productService;
+            _analyticsService = analyticsService;
             // Загружаем продукты при инициализации
             _ = LoadProductsAsync();
         }
@@ -92,7 +95,9 @@ namespace BinnoMetricMaui.ViewModel
         [RelayCommand]
         private void GetTopEmployeesByProduct(int productId)
         {
-            var product = "Test";
+            var vm = new TopEmployeesByProductViewModel(productId, _analyticsService);
+            var page = new TopEmployeesByProductPage(vm);
+            Shell.Current.Navigation.PushAsync(page);
         }
 
         [RelayCommand]

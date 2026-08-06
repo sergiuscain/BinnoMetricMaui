@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:BinnoMetricMaui.ViewModel"
+             xmlns:view="clr-namespace:BinnoMetricMaui.View"
+             x:Class="BinnoMetricMaui.View.TopEmployeesByProductPage"
+             Title="TopEmployeesByProductPage">
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" Padding="10">
+            <CollectionView 
+                ItemsSource="{Binding EmployeeStat}"
+                VerticalScrollBarVisibility="Always">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border  Style="{StaticResource ShadowBorder}">
+                            <Grid ColumnDefinitions="*,*,*,Auto">
+                                <Label Style="{StaticResource SubtitleLabel}"  Text="{Binding FullName}" Grid.Column="0"/>
+                                <Label Style="{StaticResource SubtitleLabel}"  Text="{Binding ShiftsCount, StringFormat='Всего смен: {0}'}" Grid.Column="1"/>
+                                <Label Style="{StaticResource SubtitleLabel}"  Text="{Binding TotalProductsCount, StringFormat='Всего продукции: {0}'}" Grid.Column="2"/>
+                                <Label Style="{StaticResource SubtitleLabel}"  Text="{Binding AverageProductsCount, StringFormat='Среднее за смену: {0}'}" Grid.Column="3"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
