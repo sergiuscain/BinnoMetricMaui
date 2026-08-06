@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace BinnoMetricMaui.Service;
 public class EmployeeService
 {
-    public readonly HttpClient _httpClient;
+    private readonly HttpClient _httpClient;
     public EmployeeService(HttpClient httpClient)
     {
         _httpClient = httpClient;
