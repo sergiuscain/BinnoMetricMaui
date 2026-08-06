@@ -33,6 +33,8 @@ namespace BinnoMetricMaui.ViewModel
         public async Task DeleteEmployee(int id)
         {
             var result = await _employeeService.DeleteEmployeeAsync(id);
+            if (result) message += $"\nСотрудник с ID: {id} удалён";
+            else message += "\nНе удалось удалить сотрудника...";
             await LoadEmployeesAsync();
         }
 
@@ -48,11 +50,11 @@ namespace BinnoMetricMaui.ViewModel
                     Employees.Add(employee);
                 }
                 
-                Message = $"Загружено {Employees.Count} сотрудников";
+                Message += $"\nЗагружено {Employees.Count} сотрудников";
             }
             catch (Exception ex)
             {
-                Message = $"Ошибка загрузки: {ex.Message}";
+                Message += $"\nОшибка загрузки: {ex.Message}";
             }
         }
         [RelayCommand]
@@ -75,12 +77,12 @@ namespace BinnoMetricMaui.ViewModel
 
                 if (result)
                 {
+                    Message += $"\nСотрудник '{name}' успешно добавлен!";
                     await LoadEmployeesAsync();
-                    Message = $"Сотрудник '{name}' успешно добавлен!";
                 }
                 else
                 {
-                    Message = "Ошибка при добавлении сотрудника!";
+                    Message += "\nОшибка при добавлении сотрудника!";
                 }
             }
         }
