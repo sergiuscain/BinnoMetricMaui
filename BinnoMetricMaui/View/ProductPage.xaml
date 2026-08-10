@@ -17,7 +17,7 @@
                 VerticalScrollBarVisibility="Always">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Border  Style="{StaticResource ShadowBorder}">
+                        <Border>
                             <Grid ColumnDefinitions="*,Auto,Auto,Auto">
                                 <Label Style="{StaticResource SubtitleLabel}"  Text="{Binding Name}" Grid.Column="0"/>
                                 <Button Grid.Column="1"
