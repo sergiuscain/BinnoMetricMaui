@@ -3,26 +3,20 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <!-- Цветовая палитра для фармацевтического производства -->
-    <Color x:Key="PrimaryColor">#2196F3</Color>
-    <Color x:Key="PrimaryDarkColor">#1976D2</Color>
-    <Color x:Key="PrimaryLightColor">#BBDEFB</Color>
-    <Color x:Key="AccentColor">#4CAF50</Color>
-    <Color x:Key="SuccessColor">#4CAF50</Color>
-    <Color x:Key="DangerColor">#F44336</Color>
-    <Color x:Key="WarningColor">#FFC107</Color>
-    <Color x:Key="InfoColor">#03A9F4</Color>
-
-    <!-- Тёмная тема -->
-    <Color x:Key="BackgroundColor">#1A1A1A</Color>
-    <Color x:Key="SecondaryBackgroundColor">#2D2D2D</Color>
-    <Color x:Key="CardBackgroundColor">#363636</Color>
-    <Color x:Key="SurfaceColor">#424242</Color>
+    <Color x:Key="One">#2979FF</Color>
+    <Color x:Key="Two">#1A2332</Color>
+    <Color x:Key="Three">#0D1117</Color>
+    <Color x:Key="PrimaryLightColor">#64B5F6</Color>
+    <Color x:Key="SuccessColor">#00E676</Color>
+    <Color x:Key="DangerColor">#FF1744</Color>
+    <Color x:Key="WarningColor">#FFD740</Color>
+    <Color x:Key="InfoColor">#40C4FF</Color>
 
     <Color x:Key="TextPrimaryColor">#FFFFFF</Color>
-    <Color x:Key="TextSecondaryColor">#f3f3f3</Color>
-    <Color x:Key="TextLightColor">#E0E0E0</Color>
+    <Color x:Key="TextSecondaryColor">#B0BEC5</Color>
+    <Color x:Key="TextLightColor">#54676E</Color>
 
-    <Color x:Key="BorderColor">#4A4A4A</Color>
+    <Color x:Key="BorderColor">#2A3A4A</Color>
     <Color x:Key="ShadowColor">#000000</Color>
 
     <!-- Стиль для кнопок -->
@@ -56,7 +50,7 @@
     </Style>
 
     <Style TargetType="Button" x:Key="PrimaryButton">
-        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource One}" />
         <Setter Property="Padding" Value="15,8" />
         <Setter Property="CornerRadius" Value="6" />
         <Setter Property="HeightRequest" Value="40" />
@@ -81,45 +75,10 @@
 
     <Style TargetType="Button" x:Key="ClearMessageBoxButton">
         <Setter Property="BackgroundColor" Value="{StaticResource WarningColor}" />
+        <Setter Property="TextColor" Value="{StaticResource TextLightColor}" />
         <Setter Property="Padding" Value="15,8" />
         <Setter Property="CornerRadius" Value="5" />
         <Setter Property="HorizontalOptions" Value="Center" />
-    </Style>
-
-
-    <Style TargetType="Button" x:Key="OutlineButton">
-        <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="BorderColor" Value="{StaticResource PrimaryColor}" />
-        <Setter Property="BorderWidth" Value="2" />
-        <Setter Property="Padding" Value="20,12" />
-        <Setter Property="CornerRadius" Value="8" />
-        <Setter Property="HeightRequest" Value="50" />
-        <Setter Property="Margin" Value="0,5" />
-        <Setter Property="VisualStateManager.VisualStateGroups">
-            <VisualStateGroupList>
-                <VisualStateGroup x:Name="CommonStates">
-                    <VisualState x:Name="Normal" />
-                    <VisualState x:Name="PointerOver">
-                        <VisualState.Setters>
-                            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
-                            <Setter Property="TextColor" Value="{StaticResource TextPrimaryColor}" />
-                        </VisualState.Setters>
-                    </VisualState>
-                    <VisualState x:Name="Pressed">
-                        <VisualState.Setters>
-                            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryDarkColor}" />
-                            <Setter Property="TextColor" Value="{StaticResource TextPrimaryColor}" />
-                            <Setter Property="Scale" Value="0.95" />
-                        </VisualState.Setters>
-                    </VisualState>
-                    <VisualState x:Name="Disabled">
-                        <VisualState.Setters>
-                            <Setter Property="Opacity" Value="0.4" />
-                        </VisualState.Setters>
-                    </VisualState>
-                </VisualStateGroup>
-            </VisualStateGroupList>
-        </Setter>
     </Style>
 
     <!-- Стиль для Label -->
@@ -129,46 +88,9 @@
         <Setter Property="VerticalTextAlignment" Value="Center"/>
     </Style>
 
-    <Style TargetType="Label" x:Key="TitleLabel">
-        <Setter Property="TextColor" Value="{StaticResource TextPrimaryColor}" />
-        <Setter Property="FontSize" Value="22" />
-        <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="Margin" Value="0,0,0,10" />
-    </Style>
-
-    <Style TargetType="Label" x:Key="SubtitleLabel">
-        <Setter Property="TextColor" Value="{StaticResource TextSecondaryColor}" />
-        <Setter Property="FontSize" Value="16" />
-        <Setter Property="Margin" Value="0,0,0,15" />
-    </Style>
-
-    <Style TargetType="Label" x:Key="InfoLabel">
-        <Setter Property="TextColor" Value="{StaticResource TextSecondaryColor}" />
-        <Setter Property="FontSize" Value="12" />
-        <Setter Property="Margin" Value="0,2" />
-    </Style>
-
-    <Style TargetType="Label" x:Key="SuccessLabel">
-        <Setter Property="TextColor" Value="{StaticResource SuccessColor}" />
-        <Setter Property="FontSize" Value="14" />
-        <Setter Property="FontAttributes" Value="Bold" />
-    </Style>
-
-    <Style TargetType="Label" x:Key="DangerLabel">
-        <Setter Property="TextColor" Value="{StaticResource DangerColor}" />
-        <Setter Property="FontSize" Value="14" />
-        <Setter Property="FontAttributes" Value="Bold" />
-    </Style>
-
-    <Style TargetType="Label" x:Key="WarningLabel">
-        <Setter Property="TextColor" Value="{StaticResource WarningColor}" />
-        <Setter Property="FontSize" Value="14" />
-        <Setter Property="FontAttributes" Value="Bold" />
-    </Style>
-
     <!-- Стиль для Border -->
     <Style TargetType="Border">
-        <Setter Property="BackgroundColor" Value="{StaticResource CardBackgroundColor}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Two}" />
         <Setter Property="StrokeThickness" Value="1" />
         <Setter Property="Stroke" Value="{StaticResource BorderColor}" />
         <Setter Property="Padding" Value="15" />
@@ -190,7 +112,6 @@
 
     <!-- Стиль для CollectionView  -->
     <Style TargetType="CollectionView">
-        <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="VerticalScrollBarVisibility" Value="Always" />
         <Setter Property="ItemsLayout">
             <Setter.Value>
@@ -199,7 +120,12 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
+    <!-- Стиль для VerticalStackLayout  -->
+    <Style TargetType="VerticalStackLayout">
+        <Setter Property="BackgroundColor" Value="{StaticResource Three}"/>
+    </Style>
+
     <!-- Стиль для Grid -->
     <Style TargetType="Grid">
         <Setter Property="ColumnSpacing" Value="15"/>
