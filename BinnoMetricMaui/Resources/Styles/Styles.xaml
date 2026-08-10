@@ -206,35 +206,6 @@
         </Setter>
     </Style>
 
-    <!-- Стиль для Border с акцентной обводкой -->
-    <Style TargetType="Border" x:Key="AccentBorder">
-        <Setter Property="BackgroundColor" Value="{StaticResource CardBackgroundColor}" />
-        <Setter Property="StrokeThickness" Value="2" />
-        <Setter Property="Stroke" Value="{StaticResource PrimaryColor}" />
-        <Setter Property="StrokeShape" Value="RoundRectangle" />
-        <Setter Property="Padding" Value="15" />
-        <Setter Property="Margin" Value="0,5" />
-    </Style>
-
-    <!-- Стиль для Border с ошибкой (красная обводка) -->
-    <Style TargetType="Border" x:Key="DangerBorder">
-        <Setter Property="BackgroundColor" Value="{StaticResource CardBackgroundColor}" />
-        <Setter Property="StrokeThickness" Value="2" />
-        <Setter Property="Stroke" Value="{StaticResource DangerColor}" />
-        <Setter Property="StrokeShape" Value="RoundRectangle" />
-        <Setter Property="Padding" Value="15" />
-        <Setter Property="Margin" Value="0,5" />
-    </Style>
-
-    <!-- Стиль для Border с успехом (зеленая обводка) -->
-    <Style TargetType="Border" x:Key="SuccessBorder">
-        <Setter Property="BackgroundColor" Value="{StaticResource CardBackgroundColor}" />
-        <Setter Property="StrokeThickness" Value="2" />
-        <Setter Property="Stroke" Value="{StaticResource SuccessColor}" />
-        <Setter Property="StrokeShape" Value="RoundRectangle" />
-        <Setter Property="Padding" Value="15" />
-        <Setter Property="Margin" Value="0,5" />
-    </Style>
 
     <!-- Стиль для CollectionView  -->
     <Style TargetType="CollectionView">
