@@ -1,13 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BinnoMetricMaui.ViewModel
+namespace BinnoMetricMaui.ViewModel;
+public partial class DowntimeViewModel : ObservableObject
 {
-    public partial class DowntimeViewModel : ObservableObject
-    {
-        [ObservableProperty]
-        private string message = "mvvm Простои";
-    }
+    [ObservableProperty]
+    private string message = "mvvm Простои";
 }
