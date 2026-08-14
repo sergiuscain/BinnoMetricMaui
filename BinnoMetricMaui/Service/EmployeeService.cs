@@ -1,9 +1,6 @@
 ﻿using BinnoMetricMaui.Model;
-using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace BinnoMetricMaui.Service;
 public class EmployeeService
