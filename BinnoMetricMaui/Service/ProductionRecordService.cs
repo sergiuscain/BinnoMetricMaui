@@ -6,9 +6,13 @@ namespace BinnoMetricMaui.Service;
 public class ProductionRecordService
 {
     private readonly HttpClient _httpClient;
-    public ProductionRecordService(HttpClient httpClient)
+    private readonly EmployeeService _employeeService;
+    private readonly ProductService _productService;
+    public ProductionRecordService(HttpClient httpClient, EmployeeService employeeService, ProductService productService)
     {
         _httpClient = httpClient;
+        _employeeService = employeeService;
+        _productService = productService;
     }
 
     public async Task<List<ProductionRecord>> GetProductionRecordAsync()
@@ -17,9 +21,20 @@ public class ProductionRecordService
 
         try
         {
+            var products = await _productService.GetProductsAsync();
+            var employees = await _employeeService.GetEmployeeAsync();
             var response = await _httpClient.GetStringAsync(url);
             var productionRecords = JsonSerializer.Deserialize<List<ProductionRecord>>(response);
-            return productionRecords;
+            var productionRecordsWithName = productionRecords.Select(record =>
+            {
+                record.SeniorOperatorName = employees.FirstOrDefault(e => e.Id == record.SeniorOperatorId)?.FullName;
+                record.OperatorDName = employees.FirstOrDefault(e => e.Id == record.OperatorDId)?.FullName;
+                record.OperatorNKName = employees.FirstOrDefault(e => e.Id == record.OperatorNKLId)?.FullName;
+                record.PackerName = employees.FirstOrDefault(e => e.Id == record.PackerId)?.FullName;
+                record.ProductName = products.FirstOrDefault(p => p.Id == record.ProductId)?.Name;
+                return record;
+            }).ToList();
+            return productionRecordsWithName;
         }
         catch
         {

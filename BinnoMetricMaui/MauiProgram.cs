@@ -35,6 +35,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<EmployeeService>();
         builder.Services.AddSingleton<AnalyticsService>();
         builder.Services.AddSingleton<ProductService>();
+        builder.Services.AddSingleton<ProductionRecordService>();
         builder.Services.AddSingleton<HttpClient>();
 
 #if DEBUG
