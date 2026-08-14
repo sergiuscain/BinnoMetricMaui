@@ -3,46 +3,44 @@ using BinnoMetricMaui.View;
 using BinnoMetricMaui.ViewModel;
 using Microsoft.Extensions.Logging;
 
-namespace BinnoMetricMaui
+namespace BinnoMetricMaui;
+public static class MauiProgram
 {
-    public static class MauiProgram
+    public static MauiApp CreateMauiApp()
     {
-        public static MauiApp CreateMauiApp()
-        {
-            var builder = MauiApp.CreateBuilder();
-            builder
-                .UseMauiApp<App>()
-                .ConfigureFonts(fonts =>
-                {
-                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiApp<App>()
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+            });
 
-            //Вкладки
-            builder.Services.AddSingleton<ProductPage>();
-            builder.Services.AddSingleton<ProductViewModel>();
-            builder.Services.AddSingleton<EmployeePage>();
-            builder.Services.AddSingleton<EmployeeViewModel>();
-            builder.Services.AddSingleton<DowntimePage>();
-            builder.Services.AddSingleton<DowntimeViewModel>();
-            builder.Services.AddSingleton<DowntimeTypePage>();
-            builder.Services.AddSingleton<DowntimeTypeViewModel>();
-            builder.Services.AddSingleton<EquipmentLine>();
-            builder.Services.AddSingleton<EquipmentLineViewModel>();
-            builder.Services.AddSingleton<ProductionRecordPage>();
-            builder.Services.AddSingleton<ProductionRecordViewModel>();
+        //Вкладки
+        builder.Services.AddSingleton<ProductPage>();
+        builder.Services.AddSingleton<ProductViewModel>();
+        builder.Services.AddSingleton<EmployeePage>();
+        builder.Services.AddSingleton<EmployeeViewModel>();
+        builder.Services.AddSingleton<DowntimePage>();
+        builder.Services.AddSingleton<DowntimeViewModel>();
+        builder.Services.AddSingleton<DowntimeTypePage>();
+        builder.Services.AddSingleton<DowntimeTypeViewModel>();
+        builder.Services.AddSingleton<EquipmentLine>();
+        builder.Services.AddSingleton<EquipmentLineViewModel>();
+        builder.Services.AddSingleton<ProductionRecordPage>();
+        builder.Services.AddSingleton<ProductionRecordViewModel>();
 
-            //Сервисы
-            builder.Services.AddSingleton<EmployeeService>();
-            builder.Services.AddSingleton<AnalyticsService>();
-            builder.Services.AddSingleton<ProductService>();
-            builder.Services.AddSingleton<HttpClient>();
+        //Сервисы
+        builder.Services.AddSingleton<EmployeeService>();
+        builder.Services.AddSingleton<AnalyticsService>();
+        builder.Services.AddSingleton<ProductService>();
+        builder.Services.AddSingleton<HttpClient>();
 
 #if DEBUG
-            builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
-            return builder.Build();
-        }
+        return builder.Build();
     }
 }
