@@ -1,39 +1,39 @@
 ﻿using BinnoMetricMaui.Model;
 using System.Text;
 using System.Text.Json;
-namespace BinnoMetricMaui.Service;
 
-public class ProductService
-{ 
+namespace BinnoMetricMaui.Service;
+public class ProductionRecordService
+{
     private readonly HttpClient _httpClient;
-    public ProductService(HttpClient httpClient)
+    public ProductionRecordService(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }
 
-    public async Task<List<Product>> GetProductsAsync()
+    public async Task<List<ProductionRecord>> GetProductionRecordAsync()
     {
-        string url = "https://localhost:7259/api/Products/GetProducts";
+        string url = "https://localhost:7259/api/ProductionRecords/GetProductionRecords";
 
         try
         {
             var response = await _httpClient.GetStringAsync(url);
-            var products = JsonSerializer.Deserialize<List<Product>>(response);
-            return products;
+            var productionRecords = JsonSerializer.Deserialize<List<ProductionRecord>>(response);
+            return productionRecords;
         }
         catch
         {
-            return new List<Product>();
+            return new List<ProductionRecord>();
         }
     }
 
-    internal async Task<bool> AddProductAsync(Product newProduct)
+    internal async Task<bool> AddProductionRecordAsync(ProductionRecord newProductionRecord)
     {
-        string url = "https://localhost:7259/api/Products/AddProduct";
+        string url = "https://localhost:7259/api/ProductionRecords/AddProductionRecord";
 
         try
         {
-            var json = JsonSerializer.Serialize(newProduct);
+            var json = JsonSerializer.Serialize(newProductionRecord);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await _httpClient.PostAsync(url, content);
             return response.IsSuccessStatusCode;
@@ -44,9 +44,9 @@ public class ProductService
         }
     }
 
-    internal async Task<bool> DeleteProductAsync(int id)
+    internal async Task<bool> DeleteProductionRecordAsync(int id)
     {
-        string url = $"https://localhost:7259/api/Products/DeleteProduct?id={id}";
+        string url = $"https://localhost:7259/api/ProductionRecords/DeleteProductionRecord?id={id}";
         try
         {
             var response = await _httpClient.DeleteAsync(url);
@@ -69,4 +69,5 @@ public class ProductService
             return false;
         }
     }
+
 }

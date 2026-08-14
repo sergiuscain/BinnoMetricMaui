@@ -1,5 +1,5 @@
 ﻿namespace BinnoMetricMaui.Model;
-internal class ProductionRecord
+public class ProductionRecord
 {
     public int Id { get; set; }
     public DateTime StartTime { get; set; }
