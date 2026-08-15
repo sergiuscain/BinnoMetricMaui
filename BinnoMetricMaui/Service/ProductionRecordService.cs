@@ -15,9 +15,9 @@ public class ProductionRecordService
         _productService = productService;
     }
 
-    public async Task<List<ProductionRecord>> GetProductionRecordAsync()
+    public async Task<List<ProductionRecord>> GetProductionRecordAsync(int page, int pageSize)
     {
-        string url = "https://localhost:7259/api/ProductionRecords/GetProductionRecords";
+        string url = $"https://localhost:7259/api/ProductionRecords/GetProductionRecords?page={page}&pageSize={pageSize}";
 
         try
         {
@@ -40,6 +40,14 @@ public class ProductionRecordService
         {
             return new List<ProductionRecord>();
         }
+    }
+
+    internal async Task<int> GetPageCountAsync(int pageSize)
+    {
+        string url = $"https://localhost:7259/api/ProductionRecords/GetPageCount?pageSize={pageSize}";
+
+        var pageCount = await _httpClient.GetStringAsync(url);
+        return int.Parse(pageCount);
     }
 
     internal async Task<bool> AddProductionRecordAsync(ProductionRecord newProductionRecord)

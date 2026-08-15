@@ -41,6 +41,18 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            <Border Margin="0,5">
+                <FlexLayout Wrap="Wrap" JustifyContent="Center" BindableLayout.ItemsSource="{Binding Pages}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Button Text="{Binding Number}" 
+                            BackgroundColor="{Binding Color}"
+                            Command="{Binding Path=BindingContext.GoToPageCommand, Source={RelativeSource AncestorType={x:Type view:ProductionRecordPage}}}"
+                            CommandParameter="{Binding Number}"/>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+            </Border>
             <Button Style="{StaticResource ClearMessageBoxButton}" Command="{Binding CLearLogMessageCommand}" HorizontalOptions="Center" Text="Очистить лог"/>
             <Label Text="{Binding LogMessage}"/>
         </VerticalStackLayout>
