@@ -38,7 +38,7 @@ public partial class EmployeeViewModel : ObservableObject
     {
         try
         {
-            var employeeList = await _employeeService.GetEmployeeAsync();
+            var employeeList = await _employeeService.GetEmployeesAsync();
             
             Employees.Clear();
             foreach (var employee in employeeList)

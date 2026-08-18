@@ -53,7 +53,7 @@ public partial class ProductionRecordViewModel : ObservableObject
     {
         try
         {
-            var productionRecordsList = await _productionRecordService.GetProductionRecordAsync(Page, PageSize);
+            var productionRecordsList = await _productionRecordService.GetProductionRecordsAsync(Page, PageSize);
 
             ProductionRecords.Clear();
             foreach (var record in productionRecordsList)
@@ -98,11 +98,12 @@ public partial class ProductionRecordViewModel : ObservableObject
         _ = LoadProductinRecordsAsync();
     }
     [RelayCommand]
-    private void GoToProductionRecordCardPage(int id)
+    private async Task GoToProductionRecordCardPage(int id)
     {
-        var vm = new ProductionRecordCardViewModel();
+        var productionRecord = await _productionRecordService.GetProductionRecordAsync(id);
+        var vm = new ProductionRecordCardViewModel(productionRecord);
         var page = new ProductionRecordCardPage(vm);
-        Shell.Current.Navigation.PushAsync(page);
+        await Shell.Current.Navigation.PushAsync(page);
     }
 
     [RelayCommand]

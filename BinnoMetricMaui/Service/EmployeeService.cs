@@ -11,7 +11,7 @@ public class EmployeeService
         _httpClient = httpClient;
     }
 
-    public async Task<List<Employee>> GetEmployeeAsync()
+    public async Task<List<Employee>> GetEmployeesAsync()
     {
         string url = "https://localhost:7259/api/Employees/GetEmployees";
 
@@ -24,6 +24,21 @@ public class EmployeeService
         catch
         {
             return new List<Employee>();
+        }
+    }
+    public async Task<Employee> GetEmployeeAsync(int? id)
+    {
+        string url = $"https://localhost:7259/api/Employees/GetEmployee?id={id}";
+
+        try
+        {
+            var response = await _httpClient.GetStringAsync(url);
+            var employee = JsonSerializer.Deserialize<Employee>(response);
+            return employee;
+        }
+        catch
+        {
+            return null;
         }
     }
 

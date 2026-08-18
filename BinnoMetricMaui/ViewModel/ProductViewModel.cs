@@ -89,11 +89,11 @@ public partial class ProductViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private void GetTopEmployeesByProduct(int productId)
+    private async Task GetTopEmployeesByProduct(int productId)
     {
         var vm = new TopEmployeesByProductViewModel(productId, _analyticsService);
         var page = new TopEmployeesByProductPage(vm);
-        Shell.Current.Navigation.PushAsync(page);
+        await Shell.Current.Navigation.PushAsync(page);
     }
 
     [RelayCommand]

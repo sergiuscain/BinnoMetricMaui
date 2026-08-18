@@ -15,14 +15,14 @@ public class ProductionRecordService
         _productService = productService;
     }
 
-    public async Task<List<ProductionRecord>> GetProductionRecordAsync(int page, int pageSize)
+    public async Task<List<ProductionRecord>> GetProductionRecordsAsync(int page, int pageSize)
     {
         string url = $"https://localhost:7259/api/ProductionRecords/GetProductionRecords?page={page}&pageSize={pageSize}";
 
         try
         {
             var products = await _productService.GetProductsAsync();
-            var employees = await _employeeService.GetEmployeeAsync();
+            var employees = await _employeeService.GetEmployeesAsync();
             var response = await _httpClient.GetStringAsync(url);
             var productionRecords = JsonSerializer.Deserialize<List<ProductionRecord>>(response);
             var productionRecordsWithName = productionRecords.Select(record =>
@@ -41,8 +41,31 @@ public class ProductionRecordService
             return new List<ProductionRecord>();
         }
     }
+    public async Task<ProductionRecord> GetProductionRecordAsync(int id)
+    {
+        string url = $"https://localhost:7259/api/ProductionRecords/GetProductionRecord?id={id}";
+        try
+        {
+            var response = await _httpClient.GetStringAsync(url);
+            ProductionRecord record = JsonSerializer.Deserialize<ProductionRecord>(response);
+            var product = await _productService.GetProductAsync(record.ProductId);
+            var seniorOperatorName = (await _employeeService.GetEmployeeAsync(record.SeniorOperatorId));
+            var operatorDName = (await _employeeService.GetEmployeeAsync(record.OperatorDId));
+            var operatorNKName = (await _employeeService.GetEmployeeAsync(record.OperatorNKLId));
+            var packerName = (await _employeeService.GetEmployeeAsync(record.PackerId));
+            record.SeniorOperatorName = seniorOperatorName.FullName;
+            record.OperatorDName = operatorDName.FullName;
+            record.OperatorNKName = operatorNKName.FullName;
+            record.PackerName = packerName.FullName;
+            return record;
+        }
+        catch
+        {
+            return null;
+        }
+    }
 
-    internal async Task<int> GetPageCountAsync(int pageSize)
+    public async Task<int> GetPageCountAsync(int pageSize)
     {
         string url = $"https://localhost:7259/api/ProductionRecords/GetPageCount?pageSize={pageSize}";
 
@@ -50,7 +73,7 @@ public class ProductionRecordService
         return int.Parse(pageCount);
     }
 
-    internal async Task<bool> AddProductionRecordAsync(ProductionRecord newProductionRecord)
+    public async Task<bool> AddProductionRecordAsync(ProductionRecord newProductionRecord)
     {
         string url = "https://localhost:7259/api/ProductionRecords/AddProductionRecord";
 
@@ -67,7 +90,7 @@ public class ProductionRecordService
         }
     }
 
-    internal async Task<bool> DeleteProductionRecordAsync(int id)
+    public async Task<bool> DeleteProductionRecordAsync(int id)
     {
         string url = $"https://localhost:7259/api/ProductionRecords/DeleteProductionRecord?id={id}";
         try

@@ -26,6 +26,21 @@ public class ProductService
             return new List<Product>();
         }
     }
+    public async Task<Product> GetProductAsync(int id)
+    {
+        string url = $"https://localhost:7259/api/Products/GetProduct?id={id}";
+
+        try
+        {
+            var response = await _httpClient.GetStringAsync(url);
+            var product = JsonSerializer.Deserialize<Product>(response);
+            return product;
+        }
+        catch
+        {
+            return null;
+        }
+    }
 
     internal async Task<bool> AddProductAsync(Product newProduct)
     {
