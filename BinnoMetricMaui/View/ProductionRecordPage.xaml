@@ -12,30 +12,27 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border>
-                            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*,*,*,*">
-                                <!-- Строка 0: Продукт, Серия, Кол-во, ID -->
-                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding ProductName}"/>
-                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding SeriesNumber, StringFormat='Серия: {0}'}"/>
-                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding ActualQuantity, StringFormat='Кол-во: {0}'}"/>
-                                <Label Grid.Row="0" Grid.Column="3" Text="Линия: - "/>
-                                <Label Grid.Row="0" Grid.Column="4" Text="{Binding Id, StringFormat='ID: {0}'}" HorizontalOptions="End"/>
+                            <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,*,*,*">
+                                <Label 
+                                    Grid.Row="0" 
+                                    Grid.Column="0" 
+                                    Text="{Binding ProductName}"/>
+                                <Label 
+                                    Grid.Row="0" 
+                                    Grid.Column="1" 
+                                    Text="{Binding SeriesNumber, StringFormat='Серия: {0}'}"/>
+                                <Label 
+                                    Grid.Row="0" 
+                                    Grid.Column="2" 
+                                    Text="{Binding ActualQuantity, StringFormat='Кол-во: {0}'}"/>
+                                <Button 
+                                    Grid.Row="0" 
+                                    Grid.Column="3" 
+                                    Text="Подробнее" 
+                                    Command="{Binding Path=BindingContext.GoToProductionRecordCardPageCommand, Source={RelativeSource AncestorType={x:Type view:ProductionRecordPage}}}"
+                                    CommandParameter="{Binding Id}"/>
 
-                                <!-- Строка 1: пустая -->
-                                <BoxView Grid.Row="1" Grid.ColumnSpan="4" HeightRequest="4"/>
-
-                                <!-- Строка 2: Сотрудники -->
-                                <Label Grid.Row="2" Grid.Column="0" Text="{Binding SeniorOperatorName, StringFormat='Старший: {0}'}"/>
-                                <Label Grid.Row="2" Grid.Column="1" Text="{Binding OperatorDName, StringFormat='Оператор D: {0}'}"/>
-                                <Label Grid.Row="2" Grid.Column="2" Text="{Binding OperatorNKName, StringFormat='Оператор НКЛ: {0}'}"/>
-                                <Label Grid.Row="2" Grid.Column="3" Text="{Binding PackerName, StringFormat='Укладчик: {0}'}"/>
-
-                                <!-- Строка 3: пустая -->
-                                <BoxView Grid.Row="3" Grid.ColumnSpan="4" HeightRequest="4"/>
-
-                                <!-- Строка 4: Комментарий (на всю ширину) -->
-                                <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4">
-                                    <Label Text="{Binding Comments, StringFormat='Комментарий: {0}'}"/>
-                                </Border>
+                                <Label Grid.Row="2" Grid.Column="0" Text="{Binding SeniorOperatorName, StringFormat='Старший оператор: {0}'}"/>
                             </Grid>
                         </Border>
                     </DataTemplate>

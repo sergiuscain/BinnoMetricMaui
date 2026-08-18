@@ -96,6 +96,11 @@ public partial class ProductionRecordViewModel : ObservableObject
         Page = pageNumber - 1;
         _ = LoadProductinRecordsAsync();
     }
+    [RelayCommand]
+    private void GoToProductionRecordCardPage(int id)
+    {
+        Console.WriteLine("Переходим в карточку записи:/");
+    }
 
     [RelayCommand]
     private void CLearLogMessage()
