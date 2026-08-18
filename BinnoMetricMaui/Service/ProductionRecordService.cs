@@ -54,6 +54,8 @@ public class ProductionRecordService
             var operatorD = (await _employeeService.GetEmployeeAsync(record.OperatorDId));
             var operatorNK = (await _employeeService.GetEmployeeAsync(record.OperatorNKLId));
             var packer = (await _employeeService.GetEmployeeAsync(record.PackerId));
+
+            record.ProductName = product.Name;
             record.SeniorOperatorName = seniorOperator.FullName;
             record.OperatorDName = operatorD.FullName;
             record.OperatorNKName = operatorNK.FullName;
