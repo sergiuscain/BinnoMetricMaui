@@ -24,7 +24,7 @@ public partial class ProductionRecordViewModel : ObservableObject
     [ObservableProperty]
     private int page = 0;
     [ObservableProperty]
-    private int pageSize = 50;
+    private int pageSize = 30;
 
     [ObservableProperty]
     private ObservableCollection<ProductionRecord> productionRecords = new ObservableCollection<ProductionRecord>();
