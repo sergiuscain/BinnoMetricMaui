@@ -48,15 +48,16 @@ public class ProductionRecordService
         {
             var response = await _httpClient.GetStringAsync(url);
             ProductionRecord record = JsonSerializer.Deserialize<ProductionRecord>(response);
+
             var product = await _productService.GetProductAsync(record.ProductId);
-            var seniorOperatorName = (await _employeeService.GetEmployeeAsync(record.SeniorOperatorId));
-            var operatorDName = (await _employeeService.GetEmployeeAsync(record.OperatorDId));
-            var operatorNKName = (await _employeeService.GetEmployeeAsync(record.OperatorNKLId));
-            var packerName = (await _employeeService.GetEmployeeAsync(record.PackerId));
-            record.SeniorOperatorName = seniorOperatorName.FullName;
-            record.OperatorDName = operatorDName.FullName;
-            record.OperatorNKName = operatorNKName.FullName;
-            record.PackerName = packerName.FullName;
+            var seniorOperator = (await _employeeService.GetEmployeeAsync(record.SeniorOperatorId));
+            var operatorD = (await _employeeService.GetEmployeeAsync(record.OperatorDId));
+            var operatorNK = (await _employeeService.GetEmployeeAsync(record.OperatorNKLId));
+            var packer = (await _employeeService.GetEmployeeAsync(record.PackerId));
+            record.SeniorOperatorName = seniorOperator.FullName;
+            record.OperatorDName = operatorD.FullName;
+            record.OperatorNKName = operatorNK.FullName;
+            record.PackerName = packer.FullName;
             return record;
         }
         catch
