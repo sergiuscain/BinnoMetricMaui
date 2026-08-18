@@ -1,5 +1,6 @@
 ﻿using BinnoMetricMaui.Model;
 using BinnoMetricMaui.Service;
+using BinnoMetricMaui.View;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
@@ -99,7 +100,9 @@ public partial class ProductionRecordViewModel : ObservableObject
     [RelayCommand]
     private void GoToProductionRecordCardPage(int id)
     {
-        Console.WriteLine("Переходим в карточку записи:/");
+        var vm = new ProductionRecordCardViewModel();
+        var page = new ProductionRecordCardPage(vm);
+        Shell.Current.Navigation.PushAsync(page);
     }
 
     [RelayCommand]
