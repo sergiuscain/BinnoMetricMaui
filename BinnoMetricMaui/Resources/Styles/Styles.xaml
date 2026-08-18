@@ -73,6 +73,15 @@
         <Setter Property="Margin" Value="0,2" />
     </Style>
 
+    <Style TargetType="Button" x:Key="WarningButton">
+        <Setter Property="BackgroundColor" Value="{StaticResource WarningColor}" />
+        <Setter Property="TextColor" Value="{StaticResource TextLightColor}" />
+        <Setter Property="Padding" Value="15,8" />
+        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="Margin" Value="0,2" />
+    </Style>
+
     <Style TargetType="Button" x:Key="ClearMessageBoxButton">
         <Setter Property="BackgroundColor" Value="{StaticResource WarningColor}" />
         <Setter Property="TextColor" Value="{StaticResource TextLightColor}" />

@@ -1,12 +1,68 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:BinnoMetricMaui.ViewModel"
+             xmlns:view="clr-namespace:BinnoMetricMaui.View"
              x:Class="BinnoMetricMaui.View.ProductionRecordCardPage"
-             Title="ProductionRecordCardPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Карточка записи"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Карточка записи">
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" Padding="10">
+            <!-- Информация о продукте -->
+            <Border>
+                <Grid ColumnDefinitions="*,*,*" RowDefinitions="*, *, *">
+                    <Label 
+                        Grid.Column="0" 
+                        Grid.Row="0"
+                        Text="{Binding Card.ProductName}" 
+                        FontSize="16" 
+                        FontAttributes="Bold"/>
+                    <Label Grid.Column="0" Grid.Row="1" Text="{Binding Card.SeriesNumber, StringFormat='Серия: {0}'}"/>
+                    <Label Grid.Column="1" Grid.Row="1" Text="{Binding Card.ActualQuantity, StringFormat='Кол-во: {0}'}"/>
+                    <Label Grid.Column="2" Grid.Row="1" Text="{Binding Card.EquipmentLineId, StringFormat='ID линии: {0}'}"/>
+                </Grid>
+            </Border>
+
+            <!-- Сотрудники -->
+            <Border>
+                <Grid ColumnDefinitions="*,*,*" RowDefinitions="*, *, *">
+                    <Label 
+                        Grid.Column="0" 
+                        Grid.Row="0"
+                        Text="Сотрудники" 
+                        FontSize="16" 
+                        FontAttributes="Bold"/>
+                    <Label Grid.Column="0" Grid.Row="1" Text="{Binding Card.SeniorOperatorName, StringFormat='Старший оператор: {0}'}"/>
+                    <Label Grid.Column="2" Grid.Row="1" Text="{Binding Card.PackerName, StringFormat='Укладчик: {0}'}"/>
+                    <Label Grid.Column="0" Grid.Row="2" Text="{Binding Card.OperatorDName, StringFormat='Оператор D: {0}'}"/>
+                    <Label Grid.Column="2" Grid.Row="2" Text="{Binding Card.OperatorNKName, StringFormat='Оператор НКЛ: {0}'}" />
+                </Grid>
+            </Border>
+
+            <!-- Комментарии -->
+            <Border>
+                <Label Text="{Binding Card.Comments, StringFormat='Комментарий: {0}'}"/>
+            </Border>
+
+            <Label Grid.Column="2" Grid.Row="1" Text="{Binding Card.Id, StringFormat='ID Записи: {0}'}"/>
+            <!-- Кнопки назад, изменить запись,  удалить запись -->
+            <Grid ColumnDefinitions="*,*,*">
+                <Button 
+                    Grid.Column="0"
+                    Text="Назад" 
+                    Style="{StaticResource PrimaryButton}"
+                    Command="{Binding GoBackCommand}"/>
+                <Button 
+                    Grid.Column="1"
+                    Text="Изменить" 
+                    Style="{StaticResource WarningButton}"
+                    Command="{Binding GoBackCommand}"/>
+                <Button 
+                    Grid.Column="2"
+                    Text="Удалить" 
+                    Style="{StaticResource DangerButton}"
+                    Command="{Binding GoBackCommand}"/>
+            </Grid>
+            
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
