@@ -25,7 +25,7 @@ public partial class ProductionRecordViewModel : ObservableObject
     private int currentPageNumber = 1;
 
     [ObservableProperty]
-    private ProductionRecordFilter filter = new ProductionRecordFilter { Page = 0, PageSize = 30, EquipmentLineId = 2 };
+    private ProductionRecordFilter filter = new ProductionRecordFilter { Page = 0, PageSize = 30};
 
     [ObservableProperty]
     private ObservableCollection<ProductionRecord> productionRecords = new ObservableCollection<ProductionRecord>();
