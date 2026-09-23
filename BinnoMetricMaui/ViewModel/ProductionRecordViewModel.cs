@@ -23,13 +23,9 @@ public partial class ProductionRecordViewModel : ObservableObject
     private int totalPageCount = 1;
     [ObservableProperty]
     private int currentPageNumber = 1;
-    [ObservableProperty]
-    private int page = 0;
-    [ObservableProperty]
-    private int pageSize = 30;
 
     [ObservableProperty]
-    private ProductionRecordFilter filter = new ProductionRecordFilter();
+    private ProductionRecordFilter filter = new ProductionRecordFilter { Page = 0, PageSize = 30, EquipmentLineId = 2 };
 
     [ObservableProperty]
     private ObservableCollection<ProductionRecord> productionRecords = new ObservableCollection<ProductionRecord>();
@@ -57,8 +53,6 @@ public partial class ProductionRecordViewModel : ObservableObject
     {
         try
         {
-            Filter.Page = Page;
-            Filter.PageSize = PageSize;
 
             var productionRecordsList = await _productionRecordService.GetProductionRecordsAsync(Filter);
 
@@ -85,7 +79,7 @@ public partial class ProductionRecordViewModel : ObservableObject
     {
         try
         {
-            var result = await _productionRecordService.GetPageCountAsync(PageSize);
+            var result = await _productionRecordService.GetPageCountAsync(filter);
             TotalPageCount = result;
 
             Pages.Clear();
@@ -108,7 +102,7 @@ public partial class ProductionRecordViewModel : ObservableObject
         }
 
         CurrentPageNumber = pageNumber;
-        Page = pageNumber - 1;
+        filter.Page = pageNumber - 1;
         _ = LoadProductinRecordsAsync();
     }
     [RelayCommand]

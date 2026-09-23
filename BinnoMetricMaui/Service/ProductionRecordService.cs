@@ -1,4 +1,5 @@
 ﻿using BinnoMetricMaui.Model;
+using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 
@@ -83,12 +84,15 @@ public class ProductionRecordService
         }
     }
 
-    public async Task<int> GetPageCountAsync(int pageSize)
+    public async Task<int> GetPageCountAsync(ProductionRecordFilter filter)
     {
-        string url = $"https://localhost:7259/api/ProductionRecords/GetPageCount?pageSize={pageSize}";
+        string url = "https://localhost:7259/api/ProductionRecords/GetPageCount";
 
-        var pageCount = await _httpClient.GetStringAsync(url);
-        return int.Parse(pageCount);
+        var response = await _httpClient.PostAsJsonAsync(url, filter);
+        response.EnsureSuccessStatusCode();
+
+        var pageCount = await response.Content.ReadFromJsonAsync<int>();
+        return pageCount;
     }
 
     public async Task<bool> AddProductionRecordAsync(ProductionRecord newProductionRecord)
