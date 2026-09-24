@@ -7,11 +7,55 @@
     <ScrollView>
         <VerticalStackLayout Spacing="10" Padding="10">
             <Border>
-                <Grid ColumnDefinitions="*,*,*">
-                    <Button Grid.Column="0" Style="{StaticResource PrimaryButton}" Command="{Binding UpdatepPoductionRecordsListCommand}" Text="Обновить" />
+                <Grid ColumnDefinitions="Auto,Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, *, *" RowDefinitions="*, *">
+                    <Label Grid.Row="0" Grid.Column="0" Text="N линии:"/>
+                    <Entry Grid.Row="0" Grid.Column="1" Text="{Binding EquipmentLineIdText, Mode=TwoWay}"/>
+
+                    <Label Grid.Row="0" Grid.Column="2" Text="ID Сотрудника:"/>
+                    <Entry Grid.Row="0" Grid.Column="3" Text="{Binding EmployeeIdText, Mode=TwoWay}"/>
+
+                    <Label Grid.Row="0" Grid.Column="4" Text="ID продукта:"/>
+                    <Entry Grid.Row="0" Grid.Column="5" Text="{Binding ProductIdText, Mode=TwoWay}"/>
+
+                    <Label Grid.Row="0" Grid.Column="6" Text="N серии:"/>
+                    <Entry Grid.Row="0" Grid.Column="7" Text="{Binding SeriesNumberText, Mode=TwoWay}"/>
+                    
+                    <Label Grid.Row="0" Grid.Column="8" Text="Комментарий:"/>
+                    <Entry Grid.Row="0" Grid.Column="9" Text="{Binding CommentsText, Mode=TwoWay}"/>
+                    
+                    <Button Grid.Row="1" Grid.Column="6" Style="{StaticResource PrimaryButton}" Command="{Binding ApplyFilterCommand}" Text="Применить" />
+
+                    <HorizontalStackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Spacing="8">
+                        <Grid ColumnDefinitions="50, Auto" ColumnSpacing="0">
+                            <Switch Grid.Column="0" 
+                                IsToggled="{Binding StartTimeEnabled}" 
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center" />
+                            <Label Grid.Column="1" 
+                               Text="С:" 
+                               VerticalOptions="Center" />      
+                        </Grid>
+                        <DatePicker Date="{Binding StartTimeValue}"
+                             IsEnabled="{Binding StartTimeEnabled}" />
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Spacing="8">
+                        <Grid ColumnDefinitions="50, Auto" ColumnSpacing="0">
+                            <Switch Grid.Column="0" 
+                                IsToggled="{Binding EndTimeEnabled}" 
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center" />
+                            <Label Grid.Column="1" 
+                            Text="По:" 
+                            VerticalOptions="Center" />
+                        </Grid>
+                        <DatePicker Date="{Binding EndTimeValue}"
+                            IsEnabled="{Binding EndTimeEnabled}" />
+                    </HorizontalStackLayout>
+
                 </Grid>
             </Border>
-            <CollectionView 
+                <CollectionView 
             ItemsSource="{Binding ProductionRecords}"
             VerticalScrollBarVisibility="Always">
                 <CollectionView.ItemTemplate>

@@ -13,9 +13,33 @@ public partial class ProductionRecordViewModel : ObservableObject
     {
         _productionRecordService = productionRecordService;
         // Загружаем производственные записи при инициализации
-        _ = GetTotalPageCount();
+        _ = GetTotalPageCountAsync();
         _ = LoadProductinRecordsAsync();
     }
+    // Элементы фильтрации (UI-поля)
+    [ObservableProperty] 
+    private string equipmentLineIdText = "";
+    [ObservableProperty] 
+    private string employeeIdText = "";
+    [ObservableProperty] 
+    private string productIdText = "";
+    [ObservableProperty] 
+    private string actualQuantityText = "";
+    [ObservableProperty] 
+    private string seriesNumberText = "";
+    [ObservableProperty] 
+    private string commentsText = "";
+
+    [ObservableProperty] 
+    private bool startTimeEnabled = false;
+    [ObservableProperty] 
+    private DateTime startTimeValue = DateTime.Today.AddMonths(-1);
+
+    [ObservableProperty] 
+    private bool endTimeEnabled = false;
+    [ObservableProperty] 
+    private DateTime endTimeValue = DateTime.Today;
+
 
     [ObservableProperty]
     private string logMessage = "";
@@ -32,20 +56,18 @@ public partial class ProductionRecordViewModel : ObservableObject
     [ObservableProperty]
     private ObservableCollection<PageModel> pages = new ObservableCollection<PageModel>();
 
-    [RelayCommand]
-    public async Task UpdatepPoductionRecordsList()
+    private static int? ParseNullableInt(string? s)
     {
-        await GetTotalPageCount();
-        await LoadProductinRecordsAsync();
+        if (string.IsNullOrWhiteSpace(s)) return null;
+        return int.TryParse(s.Trim(), out var v) ? v : null;
     }
-
     [RelayCommand]
     public async Task DeleteProductinRecord(int id)
     {
         var result = await _productionRecordService.DeleteProductionRecordAsync(id);
         if (result) LogMessage += $"\nПроизводственная запись с ID: {id} удалена";
         else LogMessage += "\nНе удалось удалить производственную запись.";
-        await GetTotalPageCount();
+        await GetTotalPageCountAsync();
         await LoadProductinRecordsAsync();
     }
 
@@ -75,11 +97,11 @@ public partial class ProductionRecordViewModel : ObservableObject
             LogMessage += $"\nОшибка загрузки: {ex.Message}";
         }
     }
-    private async Task GetTotalPageCount()
+    private async Task GetTotalPageCountAsync()
     {
         try
         {
-            var result = await _productionRecordService.GetPageCountAsync(filter);
+            var result = await _productionRecordService.GetPageCountAsync(Filter);
             TotalPageCount = result;
 
             Pages.Clear();
@@ -102,7 +124,7 @@ public partial class ProductionRecordViewModel : ObservableObject
         }
 
         CurrentPageNumber = pageNumber;
-        filter.Page = pageNumber - 1;
+        Filter.Page = pageNumber - 1;
         _ = LoadProductinRecordsAsync();
     }
     [RelayCommand]
@@ -118,6 +140,24 @@ public partial class ProductionRecordViewModel : ObservableObject
     private void CLearLogMessage()
     {
         LogMessage = "";
+    }
+
+    [RelayCommand]
+    private async Task ApplyFilter()
+    {
+        Filter.Page = 0;
+        Filter.EquipmentLineId = ParseNullableInt(EquipmentLineIdText);
+        Filter.EmployeeId = ParseNullableInt(EmployeeIdText);
+        Filter.ProductId = ParseNullableInt(ProductIdText);
+        Filter.ActualQuantity = ParseNullableInt(ActualQuantityText);
+        Filter.SeriesNumber = string.IsNullOrWhiteSpace(SeriesNumberText) ? null : SeriesNumberText.Trim();
+        Filter.Comments = string.IsNullOrWhiteSpace(CommentsText) ? null : CommentsText.Trim();
+        Filter.StartTime = StartTimeEnabled ? StartTimeValue : DateTime.MinValue;
+        Filter.EndTime = EndTimeEnabled ? EndTimeValue.AddDays(1).AddTicks(-1) : DateTime.MaxValue;
+        CurrentPageNumber = 1;
+
+        await GetTotalPageCountAsync();
+        await LoadProductinRecordsAsync();
     }
 
 }

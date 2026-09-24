@@ -26,21 +26,11 @@ public class ProductionRecordService
             var products = await _productService.GetProductsAsync();
             var employees = await _employeeService.GetEmployeesAsync();
 
-            var queryParams = new List<string>();
-            if (filter.Page.HasValue) queryParams.Add($"Page={filter.Page.Value}");
-            if (filter.PageSize.HasValue) queryParams.Add($"PageSize={filter.PageSize.Value}");
-            if (filter.EmployeeId.HasValue) queryParams.Add($"EmployeeId={filter.EmployeeId.Value}");
-            if (filter.ProductId.HasValue) queryParams.Add($"ProductId={filter.ProductId.Value}");
-            if (filter.EquipmentLineId.HasValue) queryParams.Add($"EquipmentLineId={filter.EquipmentLineId.Value}");
-            if (!string.IsNullOrEmpty(filter.SeriesNumber)) queryParams.Add($"SeriesNumber={Uri.EscapeDataString(filter.SeriesNumber)}");
-            if (filter.ActualQuantity.HasValue) queryParams.Add($"ActualQuantity={filter.ActualQuantity.Value}");
-            if (!string.IsNullOrEmpty(filter.Comments)) queryParams.Add($"Comments={Uri.EscapeDataString(filter.Comments)}");
+            var response = await _httpClient.PostAsJsonAsync(url, filter);
+            response.EnsureSuccessStatusCode();
 
-            if (queryParams.Count > 0)
-                url += "?" + string.Join("&", queryParams);
+            var productionRecords = await response.Content.ReadFromJsonAsync<List<ProductionRecord>>();
 
-            var response = await _httpClient.GetStringAsync(url);
-            var productionRecords = JsonSerializer.Deserialize<List<ProductionRecord>>(response);
             var productionRecordsWithName = productionRecords.Select(record =>
             {
                 record.SeniorOperatorName = employees.FirstOrDefault(e => e.Id == record.SeniorOperatorId)?.FullName;
@@ -50,6 +40,7 @@ public class ProductionRecordService
                 record.ProductName = products.FirstOrDefault(p => p.Id == record.ProductId)?.Name;
                 return record;
             }).ToList();
+
             return productionRecordsWithName;
         }
         catch
