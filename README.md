@@ -1,3 +1,10 @@
 Вкладка с производственными записями:
 <img width="1908" height="1031" alt="image" src="https://github.com/user-attachments/assets/ec1a5181-88aa-48e3-91c9-836de48e29bd" />
+Работающие фильтры:
+<img width="1918" height="601" alt="image" src="https://github.com/user-attachments/assets/78513ee9-1170-46de-9a55-327053edfc37" />
+Пагинация:
+<img width="1908" height="755" alt="image" src="https://github.com/user-attachments/assets/dbc0683b-5ee3-4f55-a07a-9ab45045b4cf" />
+Логирование ошибок и предупреждений в низу страницы:
+<img width="1904" height="166" alt="image" src="https://github.com/user-attachments/assets/0dca5add-20ac-4b80-9c6f-4ff061f95546" />
+
 
