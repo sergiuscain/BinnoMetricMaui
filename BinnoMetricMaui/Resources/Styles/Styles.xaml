@@ -133,11 +133,29 @@
     <!-- Стиль для VerticalStackLayout  -->
     <Style TargetType="VerticalStackLayout">
         <Setter Property="BackgroundColor" Value="{StaticResource Three}"/>
+        <Setter Property="Spacing" Value="10"/>
+        <Setter Property="Padding" Value="10"/>
+    </Style>
+
+    <Style TargetType="VerticalStackLayout" x:Key="PrimaryVerticalStackLayout">
+        <Setter Property="BackgroundColor" Value="{StaticResource Two}"/>
+    </Style>
+
+    <!-- Стиль для HorizontalStackLayout  -->
+    <Style TargetType="HorizontalStackLayout" x:Key="PrimaryHorizontalStackLayout">
+        <Setter Property="BackgroundColor" Value="{StaticResource Two}"/>
     </Style>
 
     <!-- Стиль для Grid -->
     <Style TargetType="Grid">
         <Setter Property="ColumnSpacing" Value="15"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource Two}"/>
+    </Style>
+
+    <!-- Стиль для Entry -->
+    <Style TargetType="Entry">
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Margin" Value="0"/>
     </Style>
 
 </ResourceDictionary>
