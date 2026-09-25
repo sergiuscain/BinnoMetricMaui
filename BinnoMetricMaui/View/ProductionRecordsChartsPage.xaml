@@ -4,11 +4,13 @@
              x:Class="BinnoMetricMaui.View.ProductionRecordsChartsPage"
              xmlns:viewmodel="clr-namespace:BinnoMetricMaui.ViewModel"
              xmlns:view="clr-namespace:BinnoMetricMaui.View" 
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
              Title="ProductionRecordsChartsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Здесь график будет"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid>
+        <lvc:CartesianChart Series="{Binding Series}" 
+                    BackgroundColor="{StaticResource Two}"
+                    XAxes="{Binding XAxes}" 
+                    HeightRequest="400"
+                    ZoomMode="X"/>
+    </Grid>
 </ContentPage>

@@ -130,7 +130,23 @@ public partial class ProductionRecordViewModel : ObservableObject
     [RelayCommand]
     private async Task GoToCharts()
     {
-        var vm = new ProductionRecordsChartsViewModel();
+        var chartFilter = new ProductionRecordFilter
+        {
+            Page = 0,
+            PageSize = int.MaxValue,
+            EquipmentLineId = Filter.EquipmentLineId,
+            EmployeeId = Filter.EmployeeId,
+            ProductId = Filter.ProductId,
+            ActualQuantity = Filter.ActualQuantity,
+            SeriesNumber = Filter.SeriesNumber,
+            Comments = Filter.Comments,
+            StartTime = Filter.StartTime,
+            EndTime = Filter.EndTime,
+        };
+
+        var allRecords = await _productionRecordService.GetProductionRecordsAsync(chartFilter);
+
+        var vm = new ProductionRecordsChartsViewModel(allRecords);
         var page = new ProductionRecordsChartsPage(vm);
         await Shell.Current.Navigation.PushAsync(page);
     }
