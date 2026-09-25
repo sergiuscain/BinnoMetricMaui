@@ -14,6 +14,8 @@
 <img width="1916" height="659" alt="image" src="https://github.com/user-attachments/assets/f5fbbb9f-5aa5-4c8d-a9c6-05a6df71bb49" />
 Вкладка Топ сотрудников по производству текущего продукта за смену:
 <img width="1919" height="909" alt="image" src="https://github.com/user-attachments/assets/62b6d932-d37b-427c-8683-907640cdb5fb" />
+Сотрудники производства:
+<img width="1915" height="1007" alt="image" src="https://github.com/user-attachments/assets/8686fc3a-ea6a-4319-b44a-9cfa910bd9c4" />
 
 
 
