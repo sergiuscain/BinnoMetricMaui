@@ -5,7 +5,7 @@
              xmlns:viewmodel="clr-namespace:BinnoMetricMaui.ViewModel"
              xmlns:view="clr-namespace:BinnoMetricMaui.View" 
              xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
-             Title="ProductionRecordsChartsPage">
+             Title="График производительности по дням">
     <Grid>
         <lvc:CartesianChart Series="{Binding Series}" 
                     BackgroundColor="{StaticResource Two}"

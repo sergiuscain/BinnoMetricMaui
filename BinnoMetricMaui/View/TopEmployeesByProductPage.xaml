@@ -4,7 +4,7 @@
              xmlns:viewmodel="clr-namespace:BinnoMetricMaui.ViewModel"
              xmlns:view="clr-namespace:BinnoMetricMaui.View"
              x:Class="BinnoMetricMaui.View.TopEmployeesByProductPage"
-             Title="TopEmployeesByProductPage">
+             Title="Топ сотрудников по производству текущего продукта за смену">
     <ScrollView>
         <VerticalStackLayout Spacing="10" Padding="10">
             <CollectionView 
