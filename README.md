@@ -10,5 +10,10 @@
 <img width="1913" height="517" alt="image" src="https://github.com/user-attachments/assets/ae333fa9-62c9-4f13-8743-99ba27b9e45b" />
 Удобный график производительности для наглядного просмотра с поддержкой фильтрации записей:
 <img width="1919" height="823" alt="image" src="https://github.com/user-attachments/assets/c5d01de1-9a95-450c-bdb5-89f1d931db5d" />
+Вкладка с продуктами производства:
+<img width="1916" height="659" alt="image" src="https://github.com/user-attachments/assets/f5fbbb9f-5aa5-4c8d-a9c6-05a6df71bb49" />
+Вкладка Топ сотрудников по производству текущего продукта за смену:
+<img width="1919" height="909" alt="image" src="https://github.com/user-attachments/assets/62b6d932-d37b-427c-8683-907640cdb5fb" />
+
 
 
