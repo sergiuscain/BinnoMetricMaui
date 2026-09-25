@@ -128,6 +128,13 @@ public partial class ProductionRecordViewModel : ObservableObject
         _ = LoadProductinRecordsAsync();
     }
     [RelayCommand]
+    private async Task GoToCharts()
+    {
+        var vm = new ProductionRecordsChartsViewModel();
+        var page = new ProductionRecordsChartsPage(vm);
+        await Shell.Current.Navigation.PushAsync(page);
+    }
+    [RelayCommand]
     private async Task GoToProductionRecordCardPage(int id)
     {
         var productionRecord = await _productionRecordService.GetProductionRecordAsync(id);

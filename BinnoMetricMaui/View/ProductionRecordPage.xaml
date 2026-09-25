@@ -36,7 +36,7 @@
                                     Text="С:" 
                                     VerticalOptions="Center" />
                             </Grid>
-                            <DatePicker Margin="0,0,50,0" Date="{Binding StartTimeValue}"
+                            <DatePicker Margin="0,0,20,0" Date="{Binding StartTimeValue}"
                                 IsEnabled="{Binding StartTimeEnabled}" />
                         </HorizontalStackLayout>
 
@@ -50,10 +50,11 @@
                                     Text="По:" 
                                     VerticalOptions="Center" />
                             </Grid>
-                            <DatePicker Margin="0,0,50,0" Date="{Binding EndTimeValue}"
+                            <DatePicker Margin="0,0,20,0" Date="{Binding EndTimeValue}"
                                 IsEnabled="{Binding EndTimeEnabled}" />
                         </HorizontalStackLayout>
-                        <Button Style="{StaticResource PrimaryButton}" Command="{Binding ApplyFilterCommand}" Text="Применить" />
+                        <Button Margin="0,0,20,0" Style="{StaticResource PrimaryButton}" Command="{Binding ApplyFilterCommand}" Text="Применить" />
+                        <Button Style="{StaticResource PrimaryButton}" Command="{Binding GoToChartsCommand}" HorizontalOptions="End" Text="Отобразить график"/>
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
             </Border>
