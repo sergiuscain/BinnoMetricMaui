@@ -8,7 +8,7 @@
 <img width="1904" height="166" alt="image" src="https://github.com/user-attachments/assets/0dca5add-20ac-4b80-9c6f-4ff061f95546" />
 Карточки с подробными данными записи:
 <img width="1913" height="517" alt="image" src="https://github.com/user-attachments/assets/ae333fa9-62c9-4f13-8743-99ba27b9e45b" />
-Удобный график производительности для наглядного просмотра:
+Удобный график производительности для наглядного просмотра с поддержкой фильтрации записей:
 <img width="1919" height="823" alt="image" src="https://github.com/user-attachments/assets/c5d01de1-9a95-450c-bdb5-89f1d931db5d" />
 
 
