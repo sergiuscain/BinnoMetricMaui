@@ -6,5 +6,7 @@
 <img width="1908" height="755" alt="image" src="https://github.com/user-attachments/assets/dbc0683b-5ee3-4f55-a07a-9ab45045b4cf" />
 Логирование ошибок и предупреждений в низу страницы:
 <img width="1904" height="166" alt="image" src="https://github.com/user-attachments/assets/0dca5add-20ac-4b80-9c6f-4ff061f95546" />
+Карточки с подробными данными записи:
+<img width="1913" height="517" alt="image" src="https://github.com/user-attachments/assets/ae333fa9-62c9-4f13-8743-99ba27b9e45b" />
 
 
