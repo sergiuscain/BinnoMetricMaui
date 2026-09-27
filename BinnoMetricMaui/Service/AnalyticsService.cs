@@ -10,10 +10,9 @@ public class AnalyticsService
     {
         _httpClient = httpClient;
     }
-    public async Task<TopEmployeesForCurrentProduct> GetTopEmployeesByProductAsync(int productId)
+    public async Task<TopEmployeesForCurrentProduct> GetTopEmployeesByProductAsync(int productId, DateTime? startDate, DateTime? endDate, int? minRecord)
     {
-        string url = $"https://localhost:7259/api/Analytics/GetTopEmployee?productId={productId}";
-
+        string url = $"https://localhost:7259/api/Analytics/GetTopEmployee?productId={productId}&minRecord={minRecord}&startDate={startDate}&endDate={endDate}";
         try
         {
             var response = await _httpClient.GetStringAsync(url);

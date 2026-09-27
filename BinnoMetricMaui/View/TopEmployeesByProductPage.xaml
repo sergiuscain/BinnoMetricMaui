@@ -7,6 +7,47 @@
              Title="Топ сотрудников по производству текущего продукта за смену">
     <ScrollView>
         <VerticalStackLayout Spacing="10" Padding="10">
+            <Border>
+                <HorizontalStackLayout>
+                    <Label Text="Минимальное количество записей для учёта в статистике:"/>
+                    <Entry Margin="0,0,30,0" Text="{Binding MinRecord, Mode=TwoWay}"/>
+
+                    <Label Text="Id продукта:"/>
+                    <Entry Margin="0,0,30,0" Text="{Binding ProductId, Mode=TwoWay}"/>
+
+                    <HorizontalStackLayout Grid.ColumnSpan="6" Spacing="8">
+                        <Grid ColumnDefinitions="50, Auto" ColumnSpacing="0">
+                            <Switch Grid.Column="0" 
+                                IsToggled="{Binding StartTimeEnabled}" 
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center" />
+                            <Label Grid.Column="1" 
+                            Text="С:" 
+                            VerticalOptions="Center" />
+                        </Grid>
+                        <DatePicker Margin="0,0,20,0" Date="{Binding StartTimeValue}"
+                            IsEnabled="{Binding StartTimeEnabled}" />
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Grid.ColumnSpan="2" Spacing="8">
+                        <Grid ColumnDefinitions="50, Auto" ColumnSpacing="0">
+                            <Switch Grid.Column="0" 
+                                IsToggled="{Binding EndTimeEnabled}" 
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center" />
+                            <Label Grid.Column="1" 
+                                Text="По:" 
+                                VerticalOptions="Center" />
+                        </Grid>
+                        <DatePicker Margin="0,0,20,0" Date="{Binding EndTimeValue}"
+                            IsEnabled="{Binding EndTimeEnabled}" />
+                    </HorizontalStackLayout>
+                    <Button Margin="0,0,20,0" Style="{StaticResource PrimaryButton}" Command="{Binding ApplyFilterCommand}" Text="Применить" />
+                </HorizontalStackLayout>
+            </Border>
+            <Border>
+                <Label Text="{Binding ProductNameText}"/>
+            </Border>
             <CollectionView 
                 ItemsSource="{Binding EmployeeStat}"
                 VerticalScrollBarVisibility="Always">
