@@ -54,9 +54,10 @@
 
 <img width="1916" height="659" alt="image" src="https://github.com/user-attachments/assets/f5fbbb9f-5aa5-4c8d-a9c6-05a6df71bb49" />
 
-**Топ сотрудников за смену**
+**Топ сотрудников по производительности за смену с фильтрами по клоичеству записей и периоду**
 
-<img width="1919" height="909" alt="image" src="https://github.com/user-attachments/assets/62b6d932-d37b-427c-8683-907640cdb5fb" />
+<img width="1918" height="980" alt="image" src="https://github.com/user-attachments/assets/f93ea762-5273-46cb-9a88-e9927b90743b" />
+
 
 **Сотрудники**
 
