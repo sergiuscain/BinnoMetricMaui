@@ -38,6 +38,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<ProductionRecordCardViewModel>();
         builder.Services.AddSingleton<ProductionRecordsChartsPage>();
         builder.Services.AddSingleton<ProductionRecordsChartsViewModel>();
+        builder.Services.AddSingleton<HomePage>();
+        builder.Services.AddSingleton<HomeViewModel>();
 
         //Сервисы
         builder.Services.AddSingleton<EmployeeService>();

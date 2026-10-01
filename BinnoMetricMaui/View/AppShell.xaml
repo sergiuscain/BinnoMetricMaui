@@ -9,6 +9,9 @@
     Shell.BackgroundColor="#0D1117">
 
     <TabBar>
+        <Tab Title="Главная">
+            <ShellContent ContentTemplate="{DataTemplate view:HomePage}"/>
+        </Tab>
         <Tab Title="Производство">
             <ShellContent ContentTemplate="{DataTemplate view:ProductionRecordPage}" />
         </Tab>
