@@ -5,6 +5,7 @@ using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 
 namespace BinnoMetricMaui.ViewModel;
+
 public partial class TopEmployeesByProductViewModel : ObservableObject
 {
     private readonly AnalyticsService _analyticsService;
@@ -52,7 +53,7 @@ public partial class TopEmployeesByProductViewModel : ObservableObject
         ProductNameText = $"Продукт: {top.ProductName}";
         try
         {
-            var employeeStatList =  top.EmployeesStat;
+            var employeeStatList = top.EmployeesStat;
 
             if (employeeStatList != null)
             {

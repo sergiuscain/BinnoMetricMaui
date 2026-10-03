@@ -63,7 +63,7 @@ public class ProductionRecordService
             var packer = (await _employeeService.GetEmployeeAsync(record.PackerId));
 
             record.ProductName = product != null ? product.Name : "null";
-            record.SeniorOperatorName = seniorOperator != null? seniorOperator.FullName : "null";
+            record.SeniorOperatorName = seniorOperator != null ? seniorOperator.FullName : "null";
             record.OperatorDName = operatorD != null ? operatorD.FullName : "null";
             record.OperatorNKName = operatorNK != null ? operatorNK.FullName : "null";
             record.PackerName = packer != null ? packer.FullName : "null";

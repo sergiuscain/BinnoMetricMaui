@@ -3,6 +3,7 @@ using System.Text;
 using System.Text.Json;
 
 namespace BinnoMetricMaui.Service;
+
 public class EmployeeService
 {
     private readonly HttpClient _httpClient;

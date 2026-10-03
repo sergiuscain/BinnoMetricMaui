@@ -17,27 +17,27 @@ public partial class ProductionRecordViewModel : ObservableObject
         _ = LoadProductinRecordsAsync();
     }
     // Элементы фильтрации (UI-поля)
-    [ObservableProperty] 
+    [ObservableProperty]
     private string equipmentLineIdText = "";
-    [ObservableProperty] 
+    [ObservableProperty]
     private string employeeIdText = "";
-    [ObservableProperty] 
+    [ObservableProperty]
     private string productIdText = "";
-    [ObservableProperty] 
+    [ObservableProperty]
     private string actualQuantityText = "";
-    [ObservableProperty] 
+    [ObservableProperty]
     private string seriesNumberText = "";
-    [ObservableProperty] 
+    [ObservableProperty]
     private string commentsText = "";
 
-    [ObservableProperty] 
+    [ObservableProperty]
     private bool startTimeEnabled = false;
-    [ObservableProperty] 
+    [ObservableProperty]
     private DateTime startTimeValue = DateTime.Today.AddMonths(-1);
 
-    [ObservableProperty] 
+    [ObservableProperty]
     private bool endTimeEnabled = false;
-    [ObservableProperty] 
+    [ObservableProperty]
     private DateTime endTimeValue = DateTime.Today;
 
 
@@ -49,7 +49,7 @@ public partial class ProductionRecordViewModel : ObservableObject
     private int currentPageNumber = 1;
 
     [ObservableProperty]
-    private ProductionRecordFilter filter = new ProductionRecordFilter { Page = 0, PageSize = 30};
+    private ProductionRecordFilter filter = new ProductionRecordFilter { Page = 0, PageSize = 30 };
 
     [ObservableProperty]
     private ObservableCollection<ProductionRecord> productionRecords = new ObservableCollection<ProductionRecord>();

@@ -1,5 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 namespace BinnoMetricMaui.Model;
+
 public class TopEmployeesForCurrentProduct
 {
     [JsonPropertyName("productName")]

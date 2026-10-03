@@ -3,9 +3,9 @@ namespace BinnoMetricMaui.View;
 
 public partial class ProductionRecordsChartsPage : ContentPage
 {
-	public ProductionRecordsChartsPage(ProductionRecordsChartsViewModel vm)
-	{
-		InitializeComponent();
+    public ProductionRecordsChartsPage(ProductionRecordsChartsViewModel vm)
+    {
+        InitializeComponent();
         BindingContext = vm;
     }
 }

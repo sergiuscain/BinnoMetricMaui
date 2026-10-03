@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace BinnoMetricMaui;
+
 public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()

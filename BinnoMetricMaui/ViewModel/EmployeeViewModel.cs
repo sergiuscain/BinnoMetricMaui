@@ -39,13 +39,13 @@ public partial class EmployeeViewModel : ObservableObject
         try
         {
             var employeeList = await _employeeService.GetEmployeesAsync();
-            
+
             Employees.Clear();
             foreach (var employee in employeeList)
             {
                 Employees.Add(employee);
             }
-            
+
             LogMessage += $"\nЗагружено {Employees.Count} сотрудников";
         }
         catch (Exception ex)

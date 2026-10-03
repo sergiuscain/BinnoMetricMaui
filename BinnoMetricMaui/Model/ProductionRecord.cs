@@ -1,6 +1,7 @@
 ﻿using System.Text.Json.Serialization;
 
 namespace BinnoMetricMaui.Model;
+
 public class ProductionRecord
 {
     // ID записей

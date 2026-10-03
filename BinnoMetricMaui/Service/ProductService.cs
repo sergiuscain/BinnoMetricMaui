@@ -4,7 +4,7 @@ using System.Text.Json;
 namespace BinnoMetricMaui.Service;
 
 public class ProductService
-{ 
+{
     private readonly HttpClient _httpClient;
     public ProductService(HttpClient httpClient)
     {

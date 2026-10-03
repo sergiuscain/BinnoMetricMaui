@@ -1,11 +1,12 @@
 ﻿using System.Text.Json.Serialization;
 
 namespace BinnoMetricMaui.Model;
+
 public class Employee
 {
     [JsonPropertyName("id")]
     public int Id { get; set; }
-    [JsonPropertyName ("fullName")]
+    [JsonPropertyName("fullName")]
     public string FullName { get; set; }
     [JsonPropertyName("isActive")]
     public bool IsActive { get; set; } = true;

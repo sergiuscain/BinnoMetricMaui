@@ -6,11 +6,12 @@ using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 
 namespace BinnoMetricMaui.ViewModel;
+
 public partial class ProductViewModel : ObservableObject
 {
     private readonly ProductService _productService;
     private readonly AnalyticsService _analyticsService;
-    public ProductViewModel(ProductService productService, AnalyticsService analyticsService    )
+    public ProductViewModel(ProductService productService, AnalyticsService analyticsService)
     {
         _productService = productService;
         _analyticsService = analyticsService;
